@@ -5,12 +5,9 @@ import streamlit as st
 
 load_dotenv()
 
-from huggingface_hub import login
-HF_KEY = os.getenv("HF_KEY") # some models require a huggingface access token
 API_KEY = os.getenv("API_KEY")
-if not HF_KEY:
+if not API_KEY:
     raise ValueError("API key not found. Did you create .env containing a key?")
-login(HF_KEY)
 
 BASE_URL = "https://api.cohere.com"
 HEADERS = {
