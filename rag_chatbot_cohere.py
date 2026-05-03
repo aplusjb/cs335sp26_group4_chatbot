@@ -1,11 +1,5 @@
 import os
-import json
 import requests
-from sentence_transformers import SentenceTransformer
-import chromadb
-import uuid
-import torch
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from dotenv import load_dotenv
 import streamlit as st
 
