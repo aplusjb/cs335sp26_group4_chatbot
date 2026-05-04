@@ -31,10 +31,10 @@ You should see `(venv)` at the start of your prompt — this confirms the enviro
 pip install -r requirements.txt
 ```
 
-4. Obtain a Hugging Face access token and create a file named `.env` containing the following:
+4. Obtain a Cohere API key and create a file named `.env` containing the following:
 
 ```
-HF_KEY=[ insert token here ]
+API_KEY=insertKeyHere
 ```
 
 > **Important:** Never commit your `.env` file. It is covered by the repo's root `.gitignore`.
@@ -46,5 +46,3 @@ streamlit run rag_chatbot.py
 ```
 
 After some time, a Streamlit tab should open in your browser.
-
-The `.ipynb` file in this repository is the old code with no frontend.
