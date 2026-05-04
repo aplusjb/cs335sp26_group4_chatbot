@@ -90,9 +90,38 @@ def generate_answer(prompt: list, max_new_tokens: int = 80) -> str:
     else:
         return f"[ERROR] {response.status_code}: {response.text}"
 
-# query = "What are the sizes of motherboard?"
-# context = retrieve_context(query, top_k=5) # top 5 entries seems to work better than 3
-# generate_answer(build_prompt(context, query))
+
+# Frontend
+
+# Custom style for chat bubbles
+st.markdown("""
+<style>
+.stApp {
+    background: #161a21
+}
+
+/* Response */
+.stChatMessage:has(div[aria-label="Chat message from assistant"]) {
+    background: #04392c;
+    color: #fff !important;
+    border-radius: 20px 20px 20px 3px;
+    display: block;
+    max-width: 75%;
+    padding: 7px 13px 7px 13px;
+}
+
+/* Query */ 
+.stChatMessage:has(div[aria-label="Chat message from user"]) {
+    background: #2F604D;
+    color: #000 !important;
+    border-radius: 20px 20px 3px 20px;
+    display: block;
+    max-width: 75%;
+    padding: 7px 13px 7px 13px;
+    margin-left: auto;
+}
+</style>
+""", unsafe_allow_html=True)
 
 st.title("PC Parts Bot")
 
@@ -103,14 +132,15 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-response = "Placeholder"
+response = "Hello! How can I help you?"
 
 if query := st.chat_input("Ask me about computers!"):
     with st.chat_message("user"):
         st.markdown(query)
+        
     st.session_state.messages.append({"role":"user", "content":query})
     context = retrieve_context(query, top_k=5)
-    if context[0] > 0.45:
+    if context[0] > 0.3:
         response = generate_answer(build_prompt(context[1], query), max_new_tokens=480)
     else:
         response = "I don't know based on my knowledge base."

@@ -1,4 +1,5 @@
-Simple RAG chatbot to answer questions about computer parts. Uses Streamlit for frontend.
+Simple RAG chatbot to answer questions about computer parts.  
+Streamlit is used for the frontend, and calls are made to [Cohere's API](https://docs.cohere.com/) for the retrieval and response generation.  
 
 ![example of frontend appearance](image.png)
 
@@ -42,7 +43,7 @@ API_KEY=insertKeyHere
 5. Run script:
 
 ```bash
-streamlit run rag_chatbot.py
+streamlit run app.py
 ```
 
 After some time, a Streamlit tab should open in your browser.
